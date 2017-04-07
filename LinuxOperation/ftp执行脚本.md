@@ -10,7 +10,7 @@ else
     DIR="/"
 fi
 ftp -niv <<EOF
-open ftp.mogujie.org
+open ftp.rabbit.org
 user $MUSER $MPASSWD
 binary
 cd $DIR
@@ -41,5 +41,3 @@ $1 $2
 close
 bye
 EOF
-
-
