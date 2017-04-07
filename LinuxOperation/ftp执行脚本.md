@@ -32,7 +32,7 @@ else
     DIR="/"
 fi
 ftp -niv <<EOF
-open 10.15.2.110
+open ip
 user $MUSER $MPASSWD
 binary
 cd $DIR
