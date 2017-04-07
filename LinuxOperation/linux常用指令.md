@@ -1,6 +1,6 @@
 linux常用指令
 
-1.scp -P10022 bin/auth_proxy tianyuan@10.19.19.28:/home/tianyuan/
+1.scp -P10022 bin/auth_proxy tianyuan@ip:/home/tianyuan/
 
 2.strings ./core.9194 | grep onError
 
