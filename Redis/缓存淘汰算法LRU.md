@@ -7,7 +7,7 @@ LRU（Least recently used，最近最少使用）算法根据数据的历史访�
 
 最常见的实现是使用一个链表保存缓存数据，详细算法实现如下：
 
-![image](./Redis/Picture/lru.png)
+![image](./Picture/lru.png)
 
 * 新数据插入到链表头部；
 
@@ -39,7 +39,7 @@ LRU-K中的K代表最近使用的次数，因此LRU可以认为是LRU-1。LRU-K�
 
 相比LRU，LRU-K需要多维护一个队列，用于记录所有缓存数据被访问的历史。只有当数据的访问次数达到K次的时候，才将数据放入缓存。当需要淘汰数据时，LRU-K会淘汰第K次访问时间距当前时间最大的数据。详细实现如下：
 
-![image](./Redis/Picture/lru-k.png)
+![image](./Picture/lru-k.png)
 
 * 数据第一次被访问，加入到访问历史列表；
 
@@ -80,7 +80,7 @@ Two queues（以下使用2Q代替）算法类似于LRU-2，不同点在于2Q将L
 
 当数据第一次访问时，2Q算法将数据缓存在FIFO队列里面，当数据第二次被访问时，则将数据从FIFO队列移到LRU队列里面，两个队列各自按照自己的方法淘汰数据。详细实现如下：
 
-![image](./Redis/Picture/2q.png)
+![image](./Picture/2q.png)
 
 
 * 新访问的数据插入到FIFO队列；
@@ -126,7 +126,7 @@ MQ算法将缓存划分为多个LRU队列，每个队列对应不同的访问优
 
 详细的算法结构图如下，Q0，Q1....Qk代表不同的优先级队列，Q-history代表从缓存中淘汰数据，但记录了数据的索引和引用次数的队列：
 
-![image](./Redis/Picture/mq.png) 
+![image](./Picture/mq.png) 
 
 如上图，算法详细描述如下：
 
