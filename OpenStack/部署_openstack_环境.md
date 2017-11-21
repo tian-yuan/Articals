@@ -24,6 +24,7 @@ devstack/tools/create-stack-user.sh
 mv devstack /opt/stack 
 
 chown -R stack:stack /opt/stack/devstack
+chmod 755 /opt/stack/ -R
 
 ## 切换到 stack 用户
 
