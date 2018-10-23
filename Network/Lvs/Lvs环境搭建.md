@@ -71,3 +71,28 @@ tcp        0      0 172.17.0.2:80           192.168.99.1:63606      SYN_RECV
 
 > NAT 模式下，Real Server 必须能把数据包返回给 LVS，一般情况下，Real Server 都是把 LVS 当做默认网关，LVS 和 Real Server 组成一个局域网
 
+
+
+> 注意，必须先 sudo ipvsadm -A -t 192.168.99.100:80 -s rr 添加一个虚拟服务，否则在 sudo ipvsadm -a -t  192.168.99.100:80 -r 172.17.0.2 -m 时会出现
+> Memory allocation problem
+
+
+
+```
+tianyuan@tianyuan-VirtualBox:~$ sudo ipvsadm -a -t  192.168.99.100:18080 -r 192.168.99.100 -m
+Memory allocation problem
+```
+
+正常情况如下：
+
+```
+tianyuan@tianyuan-VirtualBox:~$ sudo ipvsadm -A -t 192.168.99.100:80 -s rr
+tianyuan@tianyuan-VirtualBox:~$ sudo ipvsadm -a -t  192.168.99.100:80 -r 172.17.0.2 -m
+tianyuan@tianyuan-VirtualBox:~$ sudo ipvsadm -L -n
+IP Virtual Server version 1.2.1 (size=4096)
+Prot LocalAddress:Port Scheduler Flags
+  -> RemoteAddress:Port           Forward Weight ActiveConn InActConn
+TCP  192.168.99.100:80 rr
+  -> 172.17.0.2:80                Masq    1      0          0 
+```
+
