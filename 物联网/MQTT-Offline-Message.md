@@ -12,3 +12,4 @@ In order to have your client as a durable client and receive messages that were 
 The mistake that I make most frequently is to forget either one of points 3 and 4, so I'm publishing with QoS=0 or subscribing with QoS=0, either of which would cause messages not to be stored.
 
 You could also look at the `queue_qos0_messages` option to tell the broker to store QoS=0 messages as well. Note that this is an implementation detail that may be specific to mosquitto
+
